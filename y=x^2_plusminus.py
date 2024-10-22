@@ -13,8 +13,7 @@ ln0_pos, = plt.plot([], [], color = 'purple' , animated = True)
 ln_neg, = plt.plot([], [], color = 'blue', animated = True)
 ln0_neg, = plt.plot([], [], color = 'purple', animated = True)
 
-x_pos = reversed(np.linspace(0, 3, 200))
-x_neg = np.linspace(-3, 0, 200)
+x_range = np.linspace(0, 3, 200)[::-1] # Generate list of magnitude of x values and reverse the list
 
 def init():
     ax.set_xlim(-3, 3)
@@ -50,7 +49,7 @@ def update(frame):
     return ln_pos, ln0_pos, ln_neg, ln0_neg
 
 
-animation = FuncAnimation(fig, update, frames = np.linspace(0, 3, 200)[::-1], init_func = init, interval = 80, blit = True, repeat = True)
+animation = FuncAnimation(fig, update, frames = x_range, init_func = init, interval = 80, blit = True, repeat = True)
     
 plt.grid(True)
 animation.save("./y=x2_limits.gif")
